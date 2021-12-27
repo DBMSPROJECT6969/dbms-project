@@ -27,5 +27,15 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+ // Confirm password validation 
+function onChange() {
+  const password = document.querySelector('input[name=pswd1]');
+  const confirm = document.querySelector('input[name=pswd2]');
+  if (confirm.value === password.value) {
+    confirm.setCustomValidity('');
+  } else {
+    confirm.setCustomValidity('Passwords do not match');
+  }
+}
 
 

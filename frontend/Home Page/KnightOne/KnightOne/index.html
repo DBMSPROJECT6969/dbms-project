@@ -58,10 +58,11 @@
           <a href="" id="myBtn" class="get-started-btn scrollto">Login</a>
           <div class="modal" id="myModal">
 
-            <!--                    LogIn                              -->
+            <!--======================LogIn=================================-->
 
             <div class="cont">
               <span class="close">&times;</span>
+              <form action="/signin" method="post">
               <div class="formin sign-in">
                 <h2>Welcome</h2>
                 <label>
@@ -73,9 +74,11 @@
                   <input type="password" />
                 </label>
                 <div class="buttons">
-                  <button class="btn-hover color-5">Sign In</button>
+                  <button class="btn-hover color-5" type="submit">Sign In</button>
                 </div>
               </div>
+            </form>
+
               <div class="sub-cont">
                 <div class="img">
                   <div class="img__text m--up">
@@ -93,33 +96,36 @@
                 </div>
                 <div class="formup sign-up">
                   <h2>Register Yourself</h2>
-                  <label>
-                    <span>Name</span>
-                    <input type="name" />
-                  </label>
-                  <label>
-                    <span>Email</span>
-                    <input type="email" />
-                  </label>
-                  <label>
-                    <span>Username</span>
-                    <input type="username" />
-                  </label>
-                  <div class="pass">
-                  <label>
-                    <span>Password</span>
-                    <input type="password" />
-                  </label>
-                  <label>
-                    <span>Confirm password</span>
-                    <input type="password" />
-                  </label>
-                </div>
-                  <!-- <button type="button" class="submit">Sign Up</button> -->
-                  <div class="buttons">
-                    <button class="btn-hover color-5">Sign Up</button>
+
+                <form action="/register" method="post">
+                    <label>
+                      <span>Name</span>
+                      <input type="name" />
+                    </label>
+                    <label>
+                      <span>Email</span>
+                      <input type="email" />
+                    </label>
+                    <label>
+                      <span>Username</span>
+                      <input type="username" />
+                    </label>
+                    <div class="pass">
+                    <label>
+                      <span>Password</span>
+                      <input type="password" name="pswd1" onChange="onChange()" />
+                    </label>
+                    <label>
+                      <span>Confirm password</span>
+                      <input type="password" name="pswd2" onChange="onChange()" />
+                    </label>
                   </div>
-                </div>
+                    <!-- <button type="button" class="submit">Sign Up</button> -->
+                    <div class="buttons">
+                      <button class="btn-hover color-5 " type="submit">Sign Up</button>
+                    </div>
+                  </div>
+               </form>
               </div>
             </div>
           </div>
@@ -129,7 +135,7 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Beginning  Section======= -->
+  <!-- =============================== Beginning  Section======================== -->
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container">
       <div class="row justify-content-center">
