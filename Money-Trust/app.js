@@ -20,7 +20,7 @@ app.get("/",function(req, res){
     res.render("index");
  });
 
-app.post("/register", function(req, res){
+ app.post("/register", function(req, res){
     var register= {
   
    name : req.body.name,
@@ -39,13 +39,16 @@ db.query("select email, username from register where email= ? or username= ?",[r
             res.render("index");
         })
 
-
-db.query('INSERT INTO register set ?',register,function(err,result){
-    if(err)
-    console.log(err);
-    console.log("New User Registered");
-    res.redirect("/");
+        
+    }
+    else{
+        alert("Email or Username already taken");
+        res.redirect("/");
+    }
 })
+
+
+
 });
 
 app.post("/signin",(req,res)=>{
