@@ -29,14 +29,26 @@ app.get("/",function(req, res){
    password: req.body.pswd1
 
 };
+db.query("select email, username from register where email= ? or username= ?",[register.email,register.username], function(err, result){
+    if(result.length===0){
+        db.query('INSERT INTO register set ?',register,function(err,result){
+            if(err)
+            console.log(err);
+            console.log("New User Registered");
+            alert("You have registered");
+            res.render("index");
+        })
 
-
-db.query('INSERT INTO register set ?',register,function(err,result){
-    if(err)
-    console.log(err);
-    console.log("New User Registered");
+        
+    }
+    else{
+        alert("Email or Username already taken");
+        res.redirect("/");
+    }
 })
-res.redirect("index");
+
+
+
 });
 
 app.post("/signin",(req,res)=>{
@@ -50,8 +62,18 @@ app.post("/signin",(req,res)=>{
 				console.log("You have signed in");
                 res.render('index')
 			} else {
-				console.log("Incorrect Username and/or Password!");
-                alert("Incorrect Username and/or Password!");
+                db.query('select username , password from Employee where username=? and password=?',[user,password],function(error,result){
+                    if(result.length>0){
+                        console.log("Admin has signed in");
+                        alert("Hello Admin");
+                        res.render('index');
+                    }
+                    else{
+                        console.log("Incorrect Username and/or Password!");
+                        alert("Incorrect Username and/or Password!");
+                    }
+                })
+				
 			}		
 		});
 	} else {
