@@ -20,7 +20,7 @@ app.get("/",function(req, res){
     res.render("index");
  });
 
- app.post("/register", function(req, res){
+app.post("/register", function(req, res){
     var register= {
   
    name : req.body.name,
@@ -35,8 +35,8 @@ db.query('INSERT INTO register set ?',register,function(err,result){
     if(err)
     console.log(err);
     console.log("New User Registered");
+    res.redirect("/");
 })
-res.redirect("index");
 });
 
 app.post("/signin",(req,res)=>{
