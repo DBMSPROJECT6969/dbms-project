@@ -17,7 +17,7 @@ app.use(express.static("public"));
 var db= require('./connection.js');
 
 app.get("/",function(req, res){
-    res.render("index");
+    res.render("index",{login: false});
  });
 
  app.post("/register", function(req, res){
@@ -36,14 +36,14 @@ db.query("select email, username from register where email= ? or username= ?",[r
             console.log(err);
             console.log("New User Registered");
             alert("You have registered");
-            res.render("index");
+            res.render("index",{login:false});
         })
 
         
     }
     else{
         alert("Email or Username already taken");
-        res.redirect("/");
+        // res.redirect("/");
     }
 })
 
@@ -60,13 +60,13 @@ app.post("/signin",(req,res)=>{
 		db.query('SELECT * FROM register WHERE username = ? AND password = ?', [user, password], function(error, results, fields) {
 			if (results.length > 0) {
 				console.log("You have signed in");
-                res.render('index')
+                res.render('index',{login:true})
 			} else {
                 db.query('select username , password from Employee where username=? and password=?',[user,password],function(error,result){
                     if(result.length>0){
                         console.log("Admin has signed in");
                         alert("Hello Admin");
-                        res.render('index');
+                        res.render('index',{login:true});
                     }
                     else{
                         console.log("Incorrect Username and/or Password!");
