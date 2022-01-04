@@ -13,6 +13,7 @@ body {
   color: #444444;
 }
 
+
 a {
   color: #009961;
   text-decoration: none;
@@ -25,6 +26,19 @@ a:hover {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
+}
+
+.welcome {
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  margin-left: 350px;
+
+}
+
+.container-fluid {
+
+  margin-top: 11px;
+  margin-bottom: 11px;
 }
 
 /*--------------------------------------------------------------
@@ -627,21 +641,23 @@ section {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 24px;
+  margin-top: 45px;
+  text-align: center;
 }
 .services .icon-box .text-align-education h4 a {
   color: #282828;
   transition: ease-in-out 0.3s;
-  margin-left: 45px;
+  /* margin-left: 45px; */
 }
 .services .icon-box .text-align-home h4 a {
   color: #282828;
   transition: ease-in-out 0.3s;
-  margin-left: 70px;
+  /* margin-left: 70px; */
 }
 .services .icon-box .text-align-car h4 a {
   color: #282828;
   transition: ease-in-out 0.3s;
-  margin-left: 80px;
+  /* margin-left: 80px; */
 }
 .services .icon-box p {
   line-height: 24px;
@@ -1263,7 +1279,7 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 15px 0;
-  background: #f9f9f9;
+  background: #009961;
   min-height: 40px;
   margin-top: 72px;
 }
@@ -1272,9 +1288,10 @@ section {
     margin-top: 63px;
   }
 }
-.breadcrumbs h2 {
+.breadcrumbs inner-pg-container h2 {
   font-size: 26px;
   font-weight: 500;
+  margin left: 100px;
 }
 .breadcrumbs ol {
   display: flex;

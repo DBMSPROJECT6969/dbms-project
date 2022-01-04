@@ -20,6 +20,14 @@ app.get("/",function(req, res){
     res.render("index",{login: false});
  });
 
+app.get("/profile",function(req,res){
+    res.render("inner-page");
+})
+
+app.get("/availableLoans",function(req,res){
+    res.render("Application");
+})
+
  app.post("/register", function(req, res){
     var register= {
   
