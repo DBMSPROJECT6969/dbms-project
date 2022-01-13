@@ -1,4 +1,6 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,7 +11,8 @@ body {
   background: #ffffff;
 }
 
-input, button {
+input,
+button {
   border: none;
   outline: none;
   background: none;
@@ -218,8 +221,8 @@ input {
   margin-top: 40px;
   margin-bottom: 20px;
   background: rgb(0, 153, 97);
-  text-transform: uppercase; */
-}
+  text-transform: uppercase; 
+}*/
 
 * {
   -webkit-box-sizing: border-box;
@@ -240,23 +243,23 @@ input {
   cursor: pointer;
   margin: 20;
   height: 55px;
-  text-align:center;
+  text-align: center;
   border: none;
   background-size: 300% 100%;
 
   border-radius: 50px;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .btn-hover:hover {
   background-position: 100% 0;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .btn-hover:focus {
@@ -264,15 +267,20 @@ input {
 }
 
 .btn-hover.color-5 {
-  background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+  background-image: linear-gradient(
+    to right,
+    #0ba360,
+    #3cba92,
+    #30dd8a,
+    #2bb673
+  );
   box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
 }
-
 
 .fb-btn {
   border: 2px solid #d3dae9;
   color: #8fa1c7;
-  background : rgb(147 144 144 / 40%);
+  background: rgb(147 144 144 / 40%);
 }
 .fb-btn span {
   font-weight: bold;

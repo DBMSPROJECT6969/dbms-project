@@ -10,21 +10,21 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../img/m5.png" rel="icon">
+  <link href="img/m5.png" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   
 
   <!-- Template Main CSS File -->
-  <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/login.css" rel="stylesheet">
-  <link href="../css/modal.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/login.css" rel="stylesheet">
+  <link href="css/modal.css" rel="stylesheet">
 
 
 </head>
@@ -38,9 +38,9 @@
       <div class="row justify-content-center">
         <div class="col-xl-9 d-flex align-items-center justify-content-lg-between">
           <div>
-            <a href="/" class="logo"><img src="../img/m5.png" alt="" class="img-fluid"></a>
-          <h1 class="logo"><a href="/" >MoneyTrust</a></h1>
-        </div>
+            <a href="/" class="logo"><img src="img/m5.png" alt="" class="img-fluid"></a>
+            <h1 class="logo"><a href="/" >MoneyTrust</a></h1>
+          </div>
           
           
           <nav id="navbar" class="navbar order-last order-lg-0">
@@ -60,32 +60,34 @@
 
         
           <% if (login) { %>
-          <a href="/" id="" class="get-started-btn">Logout</a>
+            <form action="/logout" method="get">
+              <button id="logoutBtn" class="get-started-btn" type="submit" style="width: 90px;">Logout</button>
+            </form>
           <% } else { %> 
-          <a href="" id="myBtn" class="get-started-btn scrollto">Login</a>
+          <a href="" id="loginBtn" class="get-started-btn scrollto">Login</a>
           <% } %>
-          <div class="modal" id="myModal">
+          
 
             <!--======================LogIn=================================-->
-
+          <div class="modal" id="myModal">
             <div class="cont">
               <span class="close">&times;</span>
               <form action="/signin" method="post">
-              <div class="formin sign-in">
-                <h2>Welcome</h2>
-                <label>
-                  <span>Username</span>
-                  <input type="username" name="usname" />
-                </label>
-                <label>
-                  <span>Password</span>
-                  <input type="password" name="passwd" />
-                </label>
-                <div class="buttons">
-                  <button class="btn-hover color-5" type="submit">Sign In</button>
-                </div>
-              </div>
-            </form>
+                <div class="formin sign-in">
+                  <h2>Welcome</h2>
+                  <label>
+                    <span>Username</span>
+                    <input type="username" name="login_name" required/>
+                  </label>
+                  <label>
+                    <span>Password</span>
+                    <input type="password" name="login_password" required/>
+                  </label>
+                  <div class="buttons">
+                    <button class="btn-hover color-5" type="submit">Sign In</button>
+                  </div>
+               </div>
+              </form>
 
               <div class="sub-cont">
                 <div class="img">
@@ -102,32 +104,33 @@
                     <span class="m--in">Sign In</span>
                   </div>
                 </div>
-                <div class="formup sign-up">
-                  <h2>Register Yourself</h2>
 
+
+              <div class="formup sign-up">
                 <form action="/register" method="post">
+                  <h2>Register Yourself</h2>
                     <label>
                       <span>Name</span>
-                      <input type="name" name="name"/>
+                      <input type="name" name="register_name" required/>
                     </label>
                     <label>
                       <span>Email</span>
-                      <input type="email" name="email"/>
+                      <input type="email" name="register_email" required/>
                     </label>
                     <label>
                       <span>Username</span>
-                      <input type="username" name="username"/>
+                      <input type="username" name="register_username" required/>
                     </label>
                     <div class="pass">
-                    <label>
-                      <span>Password</span>
-                      <input type="password" name="pswd1" onChange="onChange()" />
-                    </label>
-                    <label>
-                      <span>Confirm password</span>
-                      <input type="password" name="pswd2" onChange="onChange()" />
-                    </label>
-                  </div>
+                      <label>
+                        <span>Password</span>
+                        <input type="password" name="pswd1" onChange="onChange()" required/>
+                      </label>
+                      <label>
+                        <span>Confirm password</span>
+                        <input type="password" name="pswd2" onChange="onChange()" required/>
+                      </label>
+                    </div>
                     <!-- <button type="button" class="submit">Sign Up</button> -->
                     <div class="buttons">
                       <button class="btn-hover color-5 " type="submit">Sign Up</button>
@@ -202,8 +205,12 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
               <div class="text-align-education">
-              <h4><a href="">Education Loan</a></h4>
-            </div>
+                <% if(login){ %>
+                  <h4><a href="/education-loan">Education Loan</a></h4>
+                <% } else{ %>
+                  <h4 ><a href="" id="myBtn" >Education Loan</a></h4>
+                <% } %>
+              </div>
               <p>Avail Education Loans for studies both in India and abroad starting from Rs. 50,000 at attractive interest rates.</p>
             </div>
           </div>
@@ -212,7 +219,12 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <div class="text-align-home">
-              <h4><a href="">Home Loan</a></h4>
+                <% if(login){ %>
+                  <h4><a href="/home-loan">Home Loan</a></h4>
+                <% } else{ %>
+                  <h4><a href="">Home Loan</a></h4>
+                <% } %>
+              
             </div>
               <p>Whether you are looking to purchase, construct or renovate a home, MoneyTrust Offers Home loan of upto 1 Cr rupees at an interest rate starting from 6.7%.  </p>
             </div>
@@ -222,7 +234,12 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
               <div class="text-align-car">
-              <h4><a href="">Car Loan</a></h4>
+                <% if(login){ %>
+                  <h4><a href="/car-loan">Car Loan</a></h4>
+                <% } else{ %>
+                  <h4><a href="">Car Loan</a></h4>
+                <% } %>
+              
             </div>
               <p>Dreaming of owning a car? Our Car Loans aims to ensures that you drive around the city in your own vehicle!</p>
             </div>
@@ -261,7 +278,7 @@
               <p>We are also providing options for different types of loans,eg-Car loan,home loan,education loan etc.</p>
             </div>
           </div>
-          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("../img/features2.jpg");'></div>
+          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("img/features2.jpg");'></div>
         </div>
 
       </div>
@@ -296,7 +313,7 @@
               <div class="email">
                 <i class="ri-mail-line"></i>
                 <h4>Email:</h4>
-                <p>MoneyTrustFamily@mysuru.com</p>
+                <p>moneytrustfamily570006@gmail.com</p>
               </div>
 
               <div class="phone">
@@ -311,7 +328,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="" method="" role="" class="php-email-form">
+            <form method="post" class="php-email-form" action="/">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -324,7 +341,7 @@
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                <textarea class="form-control" name="message" rows="5" id="message" placeholder="Message" required></textarea>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
@@ -364,8 +381,8 @@
 
 
   <!-- Template Main JS File -->
-  <script src="../js/modal.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 
