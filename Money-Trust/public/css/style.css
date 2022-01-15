@@ -22,6 +22,12 @@ a:hover {
   color: #00cc81;
   text-decoration: none;
 }
+.mt-4{
+  margin-left: 170px;
+}
+.col-md-6{
+  margin-left: 110px;
+}
 
 h1,
 h2,
