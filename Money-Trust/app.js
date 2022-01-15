@@ -39,6 +39,68 @@ app.get("/availableLoans",function(req,res){
     res.render("application");
 })
 
+app.get("/records",function(req,res){
+    db.query("select * from Applicant where status='2'",function(err, rows){
+        if(err)
+        throw err;
+        else
+        res.render('records',{data : rows})
+    })
+    
+})
+
+
+app.get('/Carloan',function(req,res){
+    db.query("select * from banks where loan_type ='car'",function(err, rows){
+        if(err)
+        throw err;
+        else
+        res.render('car-loan',{data : rows})
+    })
+})
+app.get('/Homeloan',function(req,res){
+    db.query("select * from banks where loan_type ='home'",function(err, rows){
+        if(err)
+        throw err;
+        else
+        res.render('home-loan',{data : rows})
+    })
+})
+app.get('/Eduloan',function(req,res){
+    db.query("select * from banks where loan_type ='education'",function(err, rows){
+        if(err)
+        throw err;
+        else
+        res.render('edu-loan',{data : rows})
+    })
+})
+
+
+app.get('/appform/:id',function(req,res){
+    let {id}=req.params;
+    var sql='select * from banks where id =?';
+    db.query(sql,[id],function(err,rows){
+        if(err)
+        throw err
+        else{
+            console.log(rows);
+        res.render('form',{data: rows});}
+    })
+    
+})
+
+
+
+
+app.get('/delete/:id', function(req,res){
+    let {id} = req.params;
+    var sql='delete from Applicant where id=?';
+    db.query(sql,[id],function(err){
+        if(err) throw err;
+    })
+    res.redirect('/records');
+})
+
 app.post("/register", function(req, res){
         var register= {
             name : req.body.register_name,
@@ -48,7 +110,7 @@ app.post("/register", function(req, res){
        };
 
     db.query("select email, username from register where email= ? or username= ?",[register.email,register.username], function(err, result){
-        if(result.length===0){
+        if(result?.length===0){
             db.query('INSERT INTO register set ?',register,function(err,result){
                 if(err)
                 console.log(err);
@@ -122,6 +184,39 @@ app.post("/",function(req,res){
         }
 
     })
+
+})
+
+
+
+app.post('/apply',function(req,res){
+
+    var application={
+        id:Math.floor((Math.random() * 100000) + 1),
+        name:req.body.name,
+        email:req.body.email,
+        phone:req.body.phone,
+        city:req.body.city,
+        bank:req.body.bank,
+        branch:req.body.branch,
+        rate:req.body.rate,
+        period:req.body.period,
+        Adhaar:req.body.adhaar,
+        pan:req.body.pan,
+        amount:req.body.amount,
+        account_no:req.body.account,
+        application_form:req.body.upload,
+        status:2
+    }
+    db.query('INSERT INTO Applicant set ?',application,function(err,result){
+        if(err)
+        console.log(err);
+        else
+        console.log("You have successfully applied for the loan");
+        
+        
+    })
+
 
 })
 

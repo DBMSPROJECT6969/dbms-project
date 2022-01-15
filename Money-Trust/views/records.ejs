@@ -23,7 +23,7 @@
   <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Template Main CSS File -->
   <link href="css/style.css" rel="stylesheet">
 
@@ -55,54 +55,63 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- <main id="main"> -->
+  <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-        <div class="welcome">
-        <h2>Welcome Abhinav Kumar</h2>
-      </div>
-    </div>
-    </section><!-- End Breadcrumbs -->
+   <section>
 
-          <section id="services" class="services">
-            <div class="container">
-          <section class="inner-page">
-            <div class="container">
-              <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="icon-box">
-              <img src="img/a2.jpg" alt="" class="img-fluid">
-              <div class="text-align-education">
-              <h4><a href="/records">Check  Status</a></h4>
-            </div>
-            </div>
-          </div>
+    <table class="table">
+        <thead>
+          <tr>
+            
+            <th scope="col">Application No.</th>
+            <th scope="col">Bank</th>
+            <th scope="col">Branch</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Period</th>
+            <th scope="col">Amount</th>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <img src="img/a1.jpg" alt="" class="img-fluid">
-              <div class="text-align-home">
-              <h4><a href="/availableLoans">Apply for Loans</a></h4>
-            </div>
-            </div>
-          </div>
+            <th width="200px">Status</th>
+            <th width="200px">Action</th>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <img src="img/a3.jpg" alt="" class="img-fluid">
-              <div class="text-align-car">
-              <h4><a href="">Sanctioned Loans</a></h4>
-            </div>
-            </div>
-          </div>
-          </div>
+         
+          </tr>
+        </thead>
+        <tbody>
+          <% if(data.length){
+         
+          for(var i = 0; i< data.length; i++) {%>  
+          <tr>
+            <!-- <th scope="row"><%= (i+1) %></th> -->
+            <td><%= data[i].id%></td>
+            <td><%= data[i].bank%></td>
+            <td><%= data[i].branch%></td>
+            <td><%= data[i].rate%></td>
+            <td><%= data[i].period%></td>
+            <td><%= data[i].amount%></td>
+            <td><button class="btn btn-warning">Pending</button></td>
 
-        </div>
+            <td>
+                <form action="/delete/<%=data[i].id%>" method="get">
+                    <button class="btn btn-success" type="submit" style="width: 90px;">Delete</button>                                            
+                </form>
+           </td>
+          </tr>
+          <% }
+                   
+           }else{ %>
+               <tr>
+                  <td colspan="3">No Loans Pending</td>
+               </tr>
+            <% } %>    
+          
+        </tbody>
+        </table>
 
-      </div>
-    </section>
+
+
+   </section>
+
+   
 
   </main><!-- End #main -->
 
@@ -119,7 +128,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
       <div class="copyright">
-        &copy; Copyright <strong><span>MoneyTrust</span></strong>. All Rights Reserved
+         Copyright <strong><span>MoneyTrust</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         Designed by <a href="">HostelGuys</a>

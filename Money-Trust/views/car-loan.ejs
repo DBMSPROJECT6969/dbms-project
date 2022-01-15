@@ -55,54 +55,55 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- <main id="main"> -->
+  <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-        <div class="welcome">
-        <h2>Welcome Abhinav Kumar</h2>
-      </div>
-    </div>
-    </section><!-- End Breadcrumbs -->
+   <section>
 
-          <section id="services" class="services">
-            <div class="container">
-          <section class="inner-page">
-            <div class="container">
-              <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="icon-box">
-              <img src="img/a2.jpg" alt="" class="img-fluid">
-              <div class="text-align-education">
-              <h4><a href="/records">Check  Status</a></h4>
-            </div>
-            </div>
-          </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">SR No.</th>
+            <th scope="col">Banks</th>
+            <th scope="col">Interest Rates</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Read More</th>
+            <th width="200px">Apply</th>
+         
+          </tr>
+        </thead>
+        <tbody>
+          <% if(data.length){
+         
+          for(var i = 0; i< data.length; i++) {%>  
+          <tr>
+            <th scope="row"><%= (i+1) %></th>
+            <td><%= data[i].bank_name%></td>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <img src="img/a1.jpg" alt="" class="img-fluid">
-              <div class="text-align-home">
-              <h4><a href="/availableLoans">Apply for Loans</a></h4>
-            </div>
-            </div>
-          </div>
+            <td><%= data[i].rate%></td>
+            <td><%= data[i].duration%></td>
+            <td><a href="#"></a>Read Details</td>
+            <td>
+                <form action="/appform/<%=data[i].id%>" method="get">
+                    <button class="btn btn-success" type="submit" style="width: 90px;">Apply Now</button>                                            
+                </form>
+           </td>
+          </tr>
+          <% }
+                   
+           }else{ %>
+               <tr>
+                  <td colspan="3">No user</td>
+               </tr>
+            <% } %>    
+          
+        </tbody>
+        </table>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <img src="img/a3.jpg" alt="" class="img-fluid">
-              <div class="text-align-car">
-              <h4><a href="">Sanctioned Loans</a></h4>
-            </div>
-            </div>
-          </div>
-          </div>
 
-        </div>
 
-      </div>
-    </section>
+   </section>
+
+   
 
   </main><!-- End #main -->
 
@@ -119,7 +120,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
       <div class="copyright">
-        &copy; Copyright <strong><span>MoneyTrust</span></strong>. All Rights Reserved
+         Copyright <strong><span>MoneyTrust</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         Designed by <a href="">HostelGuys</a>

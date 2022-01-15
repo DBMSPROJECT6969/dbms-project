@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/cyborg/bootstrap.min.css"> -->
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -52,39 +55,76 @@ button:hover {
     </div>
 <div class="container">
   <h3>Loan Application Form</h3>
-  <form action="/action_page.php">
+  <form action="/apply" method="post">
     <label class="required" for="fname">Full Name</label><span style="color:#ff0000">*</span>
-    <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+    <input type="text" id="fname" name="name" placeholder="Your name.." required>
 
      <label class="required" for="email">Email</label><span style="color:#ff0000">*</span>
      <input type="email" name="email" id="email" placeholder="Your email.." required>
 
      <label class="required" for="phoneno">Phone Number</label><span style="color:#ff0000">*</span>
-     <input type="number" name="phoneno" id="phno" placeholder="Your phone number.." required>
+     <input name="phone" id="phno" placeholder="Your phone number.." required>
 
     <label class="required" for="city">City</label><span style="color:#ff0000">*</span>
-    <select id="country" name="country">
-      <option value="australia">Mysore</option>
-      <option value="canada">Delhi</option>
-      <option value="usa">bengaluru</option>
+    <select data-target="branch" class="selectFilter" id="city" name="city">
+      <option value="-1">City</option>
+
+      <option data-ref="mys">Mysore</option>
+      <option data-ref="del">Delhi</option>
+      <option data-ref="blr">bengaluru</option>
     </select>
 
+
+    <label for="bank" class="required">Bank</label><span style="color:#ff0000">*</span>
+    <input type="text" id="bank" name="bank"  value="<%=data[0].bank_name%>" required readonly> 
+
+    <label class="required" for="branch">Branch</label><span style="color:#ff0000">*</span>
+    <select class="branch selectFilter" id="branch" name="branch">
+      <option value="-1">Branch</option>
+
+      <option data-belong="mys">SJCE Campus</option>
+      <option data-belong="mys">Vijaynagar</option>
+      <option data-belong="mys">Gokulam</option>
+      <option data-belong="del">Karol Bagh</option>
+      <option data-belong="del">Janakpuri</option>
+      <option data-belong="del">Old Rajendra Nagar</option>
+      <option data-belong="blr">Majestic</option>
+      <option data-belong="blr">Whitefield</option>
+      <option data-belong="blr">Kundahalli</option>
+    </select>
+
+
+
+    
+
+    <label for="rate" class="required">Interest Rate(%p.a.)</label><span style="color:#ff0000">*</span>
+    <input  type="text" id="rate" name="rate"  value="<%=data[0].rate%>" required readonly> 
+
+    <label for="duration" class="required">Period(years)</label><span style="color:#ff0000">*</span>
+    <input  type="text" id="duration" name="period"  value="<%=data[0].duration%>" required readonly> 
      
      <label for="adhaar" class="required">Adhaar Card Number</label><span style="color:#ff0000">*</span>
-    <input maxlength="16" minlength="16" type="number" id="ano" name="adhaarnumber" placeholder="Adhaar Card Number.." required>
+    <input maxlength="16" minlength="16"  id="ano" name="adhaar" placeholder="Adhaar Card Number.." required>
 
     <label for="pan" class="required">PAN Number</label><span style="color:#ff0000">*</span>
-    <input type="number" id="pno" name="pancard" placeholder="PAN Number.." required>
+    <input  id="pno" name="pan" placeholder="PAN Number.." required>
+
+    <label for="amt" class="required">Amount</label><span style="color:#ff0000">*</span>
+    <input  id="amt" name="amount" placeholder="Amount.." required>
     
-    <label for="" class="required">Upload Your Adhaar Card and Pan Card</label><span style="color:#ff0000">*</span>
+    <label for="accno" class="required">Account Number</label><span style="color:#ff0000">*</span>
+    <input id="acno" name="account" placeholder="Your account number.. " required>
+
+    <label for="" class="required">Upload Your Adhaar Card, Pan Card and Passbook</label><span style="color:#ff0000">*</span>
     <input type="file" name="upload" accept="application/pdf,application/vnd.ms-excel"  required/>
 
-    <label for="accno" class="required">Account Number</label><span style="color:#ff0000">*</span>
-    <input type="number" id="acno" name="accno" placeholder="Your account number.. " required>
+    
 
     <button type="submit">Submit</button>
   </form>
 </div>
 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="../js/selectFilter.min.js"></script>
 </body>
 </html>
