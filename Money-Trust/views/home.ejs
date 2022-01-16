@@ -51,7 +51,8 @@
               <li><a class="nav-link scrollto" href="#services">Services</a></li>
               <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
               <% if(login){ %>
-              <li><a class="nav-link scrollto" href="/profile">Profile</a></li>
+
+              <li><a class="nav-link scrollto" href="/profile/<%=login[0].name%>">Profile</a></li>
               <% } %>
 
             </ul>
@@ -71,7 +72,7 @@
             <!--======================LogIn=================================-->
           <div class="modal" id="myModal">
             <div class="cont">
-              <span class="close">&times;</span>
+              <span class="close"></span>
               <form action="/signin" method="post">
                 <div class="formin sign-in">
                   <h2>Welcome</h2>
@@ -205,8 +206,8 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
               <div class="text-align-education">
-                <% if(login){ %>
-                  <h4><a href="/education-loan">Education Loan</a></h4>
+                <% if(login.length>0){ %>
+                  <h4><a href="/Eduloan">Education Loan</a></h4>
                 <% } else{ %>
                   <h4 ><a href="" id="myBtn" >Education Loan</a></h4>
                 <% } %>
@@ -219,8 +220,8 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <div class="text-align-home">
-                <% if(login){ %>
-                  <h4><a href="/home-loan">Home Loan</a></h4>
+                <% if(login.length>0){ %>
+                  <h4><a href="/Homeloan">Home Loan</a></h4>
                 <% } else{ %>
                   <h4><a href="">Home Loan</a></h4>
                 <% } %>
@@ -234,8 +235,8 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
               <div class="text-align-car">
-                <% if(login){ %>
-                  <h4><a href="/car-loan">Car Loan</a></h4>
+                <% if(login.length>0){ %>
+                  <h4><a href="/Carloan">Car Loan</a></h4>
                 <% } else{ %>
                   <h4><a href="">Car Loan</a></h4>
                 <% } %>
@@ -368,7 +369,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
       <div class="copyright">
-        &copy; Copyright <strong><span>MoneyTrust</span></strong>. All Rights Reserved
+         Copyright <strong><span>MoneyTrust</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         Designed by <a href="">HostelGuys</a>

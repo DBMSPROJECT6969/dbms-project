@@ -74,9 +74,11 @@ button:hover {
       <option data-ref="blr">bengaluru</option>
     </select>
 
+    <label for="loan_type" class="required">Loan Type</label><span style="color:#ff0000">*</span>
+    <input type="text" id="loan_type" name="loan_type"  value="<%=data[0].loan_type%>" required readonly>
 
     <label for="bank" class="required">Bank</label><span style="color:#ff0000">*</span>
-    <input type="text" id="bank" name="bank"  value="<%=data[0].bank_name%>" required readonly> 
+    <input type="text" id="bank" name="bank"  value="<%=data[0].bank%>" required readonly> 
 
     <label class="required" for="branch">Branch</label><span style="color:#ff0000">*</span>
     <select class="branch selectFilter" id="branch" name="branch">

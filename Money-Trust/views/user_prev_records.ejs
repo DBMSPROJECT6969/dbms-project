@@ -56,10 +56,11 @@
   </header><!-- End Header -->
 
   <main id="main">
+
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="welcome">
-        <h2>There are currently <%=data.length%> loans  pending</h2>
+        <h2>You have applied for <%=data.length%> loans in the past</h2>
       </div>
     </div>
     </section>
@@ -72,8 +73,8 @@
             
             <th scope="col">Application No.</th>
             <th scope="col">Name</th>
-            <th scope="col">Loan Type</th>
 
+            <th scope="col">Loan Type</th>
 
             <th scope="col">Bank</th>
             <th scope="col">Branch</th>
@@ -82,7 +83,7 @@
             <th scope="col">Amount</th>
 
             <th width="100px">Status</th>
-            <th width="100px">Action</th>
+           
 
          
           </tr>
@@ -95,6 +96,7 @@
             <!-- <th scope="row"><%= (i+1) %></th> -->
             <td><%= data[i].id%></td>
             <td><%= data[i].name%></td>
+
             <td><%= data[i].loan_type%></td>
 
             <td><%= data[i].bank%></td>
@@ -102,19 +104,18 @@
             <td><%= data[i].rate%></td>
             <td><%= data[i].period%></td>
             <td><%= data[i].amount%></td>
-            <td><button class="btn btn-warning">Pending</button></td>
-
-            <td>
-                <form action="/delete/<%=data[i].id%>" method="get">
-                    <button class="btn btn-success" type="submit" style="width: 90px;">Delete</button>                                            
-                </form>
-           </td>
+            <%if(data[i].status==0) { %>
+            <td><button class="btn btn-danger">Rejected</button></td>
+            <% } else if(data[i].status==1) { %>
+            <td><button class="btn btn-success">Accepted</button></td>
+                <% } %>
+        
           </tr>
           <% }
                    
            }else{ %>
                <tr>
-                  <td colspan="3">No Loans Pending</td>
+                  <td colspan="3">You have not applied for loans in the past</td>
                </tr>
             <% } %>    
           

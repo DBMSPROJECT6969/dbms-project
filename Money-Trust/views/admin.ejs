@@ -62,8 +62,8 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-        <div class="welcome">
-        <h2>Welcome Abhinav Kumar</h2>
+        <div class="welcome mx-auto">
+        <h2 >Welcome To <%=data[0].bank%>, <%=data[0].branch%> branch</h2>
       </div>
     </div>
     </section><!-- End Breadcrumbs -->
@@ -75,7 +75,7 @@
             <div class="icon-box">
               <img src="img/a2.jpg" alt="" class="img-fluid">
               <div class="text-align-education">
-              <h4><a href="/records">View Customers</a></h4>
+              <h4><a href="/customers/<%=data[0].username%>">View Customers</a></h4>
             </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
             <div class="icon-box">
               <img src="img/a3.jpg" alt="" class="img-fluid">
               <div class="text-align-car">
-              <h4><a href="">Verify Applications</a></h4>
+              <h4><a href="/admin_verification/<%=data[0].username%>">Verify Applications</a></h4>
             </div>
             </div>
           </div>
@@ -110,7 +110,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
       <div class="copyright">
-        &copy; Copyright <strong><span>MoneyTrust</span></strong>. All Rights Reserved
+         Copyright <strong><span>MoneyTrust</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         Designed by <a href="">HostelGuys</a>
