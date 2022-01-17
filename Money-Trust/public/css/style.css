@@ -12,6 +12,30 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }
+.img-fluid1{
+  margin-top: 50px;
+  margin-left: 350px;
+  height: 450px;
+  border-radius: 20px;
+}
+.congrats{
+  color: #ffffff;
+  font-size: 22px;
+
+}
+.status-check button[type="status"] {
+  background: #da7b7b;
+  border: 0;
+  padding: 3px 25px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 20px;
+  margin-left: 480px;
+  
+}
+.status-check button[type="status"]:hover {
+  background: #f0544e;
+}
 
 a {
   color: #009961;
