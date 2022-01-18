@@ -166,22 +166,24 @@ app.get('/delete/:id', function(req,res){
 //CAR LOAN
 app.get('/Carloan/:username',function(req,res){
     let {username}=req.params;
-    db.query("select * from banks where loan_type ='Car-Loan'",function(err, rows){
+    db.query(`select * from banks inner join register  where banks.loan_type ='Car-Loan' and register.username='${username}'`,function(err, results){
+
         if(err)
         throw err;
         else
-        res.render('car-loan',{data : rows})
+        res.render('car-loan',{data : results})
     })
 })
 //HOME LOAN
 app.get('/Homeloan/:username',function(req,res){
     let {username}=req.params;
 
-    db.query("select * from banks where loan_type ='Home-Loan'",function(err, rows){
+    db.query(`select * from banks inner join register  where banks.loan_type ='Home-Loan' and register.username='${username}'`,function(err, results){
+
         if(err)
         throw err;
         else
-        res.render('home-loan',{data : rows})
+        res.render('home-loan',{data : results})
     })
 })
 
