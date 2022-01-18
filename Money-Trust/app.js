@@ -274,10 +274,10 @@ app.get('/accept/:id', function(req,res){
    db.query(sql,function(err){
        if(err) throw err;
        else{
-           db.query(`select * from Employee where branch in (select branch from Applicant where id=${id}) and bank in (select bank from Applicant where id=${id})`,function(err,results){
-               if(err)
-               throw err
-               else
+        //    db.query(`select * from Employee where branch in (select branch from Applicant where id=${id}) and bank in (select bank from Applicant where id=${id})`,function(err,results){
+        //        if(err)
+        //        throw err
+        //        else
                // console.log(results[0].username);
             //    res.redirect(`/admin_verification/${results[0].username}`)
             res.redirect('back');
@@ -293,10 +293,10 @@ app.get('/reject/:id', function(req,res){
     db.query(sql,function(err){
         if(err) throw err;
         else{
-            db.query(`select * from Employee where branch in (select branch from Applicant where id=${id}) and bank in (select bank from Applicant where id=${id})`,function(err,results){
-                if(err)
-                throw err
-                else
+            // db.query(`select * from Employee where branch in (select branch from Applicant where id=${id}) and bank in (select bank from Applicant where id=${id})`,function(err,results){
+            //     if(err)
+            //     throw err
+            //     else
                 // console.log(results[0].username);
                 // res.redirect(`/admin_verification/${results[0].username}`)
                 res.redirect('back');
