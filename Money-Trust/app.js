@@ -213,7 +213,7 @@ app.get('/appform/:id/:username',function(req,res){
         if(err)
         throw err
         else{
-            // console.log(results);
+            console.log(results);
         res.render('form',{data: results});}
     })
     

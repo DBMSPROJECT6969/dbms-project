@@ -55,18 +55,18 @@ button:hover {
     </div>
 <div class="container">
   <h3>Loan Application Form</h3>
-  <form action="/apply/<%=data[0].id%>/<%=data[0].username%>" method="post">
+  <form action="/apply/<%=data[0].id%>/<%=data[0].username%>" method="get">
     <label class="required" for="fname">Full Name</label><span style="color:#ff0000">*</span>
-    <input type="text" id="fname" name="name" value="<%=data[0].name%>" required readonly>
+    <input type="text"  name="name" value="<%=data[0].name%>" required readonly>
 
      <label class="required" for="email">Email</label><span style="color:#ff0000">*</span>
-     <input type="email" name="email" id="email" value="<%=data[0].email%>" required readonly>
+     <input type="email" name="email"  value="<%=data[0].email%>" required readonly>
 
      <label class="required" for="phoneno">Phone Number</label><span style="color:#ff0000">*</span>
-     <input name="phone" id="phno" placeholder="Your phone number.." required>
+     <input name="phone" placeholder="Your phone number.." required>
 
     <label class="required" for="city">City</label><span style="color:#ff0000">*</span>
-    <select data-target="branch" class="selectFilter" id="city" name="city">
+    <select data-target="branch" class="selectFilter" name="city" required>
       <option value="">City</option>
 
       <option data-ref="mys">Mysore</option>
@@ -75,13 +75,13 @@ button:hover {
     </select>
 
     <label for="loan_type" class="required">Loan Type</label><span style="color:#ff0000">*</span>
-    <input type="text" id="loan_type" name="loan_type"  value="<%=data[0].loan_type%>" required readonly>
+    <input type="text"  name="loan_type"  value="<%=data[0].loan_type%>" required readonly>
 
     <label for="bank" class="required">Bank</label><span style="color:#ff0000">*</span>
-    <input type="text" id="bank" name="bank"  value="<%=data[0].bank%>" required readonly> 
+    <input type="text"  name="bank"  value="<%=data[0].bank%>" required readonly> 
 
     <label class="required" for="branch">Branch</label><span style="color:#ff0000">*</span>
-    <select class="branch selectFilter" id="branch" name="branch">
+    <select class="branch selectFilter"  name="branch" required>
       <option value="">Branch</option>
 
       <option data-belong="mys">SJCE Campus</option>
