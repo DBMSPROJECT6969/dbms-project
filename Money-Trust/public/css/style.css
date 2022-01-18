@@ -10,7 +10,13 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444444;
+  color: #363636;
+}
+.admin-page{
+  margin-left : 110px;
+}
+.admin-verify{
+  margin-left: 80px;
 }
 .img-fluid1{
   margin-top: 50px;
@@ -37,6 +43,11 @@ body {
   background: #f0544e;
 }
 
+.admin-heading{
+  font-size: 35px;
+  text-align: center;
+  color: bisque;
+}
 a {
   color: #009961;
   text-decoration: none;
