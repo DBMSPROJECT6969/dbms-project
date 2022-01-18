@@ -142,7 +142,7 @@ app.get('/delete/:id', function(req,res){
     db.query(sql,[id],function(err){
         if(err) throw err;
     })
-    res.redirect('/records');
+    res.redirect('back');
 })
 
 
@@ -220,10 +220,10 @@ app.post('/apply',function(req,res){
     db.query('INSERT INTO Applicant set ?',application,function(err,result){
         if(err)
         console.log(err);
-        else
+        else{
         console.log("You have successfully applied for the loan");
-        
-        
+        res.render('congrats');
+        }
     })
 
 
@@ -279,7 +279,8 @@ app.get('/accept/:id', function(req,res){
                throw err
                else
                // console.log(results[0].username);
-               res.redirect(`/admin_verification/${results[0].username}`)
+            //    res.redirect(`/admin_verification/${results[0].username}`)
+            res.redirect('back');
            })
        }
    })
@@ -297,7 +298,8 @@ app.get('/reject/:id', function(req,res){
                 throw err
                 else
                 // console.log(results[0].username);
-                res.redirect(`/admin_verification/${results[0].username}`)
+                // res.redirect(`/admin_verification/${results[0].username}`)
+                res.redirect('back');
             })
         }
     })

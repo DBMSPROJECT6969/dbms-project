@@ -48,7 +48,7 @@
           <h1 class="logo"><a href="/" >MoneyTrust</a></h1>
         </div>
           
-          <a href="#about" class="get-started-btn scrollto">Logout</a>
+          <a href="/logout" class="get-started-btn scrollto">Logout</a>
         </div>
       </div>
 
@@ -62,7 +62,11 @@
       <div class="container">
         <div class="congrats">
         <p>Congratulation !! Your application has been successfully submitted. Check your loan application status below.</p>
-        <div class="status-check"><button type="status">Check Status</button></div>
+        <div class="status-check">
+          <form action="/records">
+           <button type="status">Check Status</button>
+          </form>
+        </div>
       </div>
     </div>
     </section><!-- End Breadcrumbs -->
