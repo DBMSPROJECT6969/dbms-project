@@ -55,19 +55,19 @@ button:hover {
     </div>
 <div class="container">
   <h3>Loan Application Form</h3>
-  <form action="/apply" method="post">
+  <form action="/apply/<%=data[0].id%>/<%=data[0].username%>" method="post">
     <label class="required" for="fname">Full Name</label><span style="color:#ff0000">*</span>
-    <input type="text" id="fname" name="name" placeholder="Your name.." required>
+    <input type="text" id="fname" name="name" value="<%=data[0].name%>" required readonly>
 
      <label class="required" for="email">Email</label><span style="color:#ff0000">*</span>
-     <input type="email" name="email" id="email" placeholder="Your email.." required>
+     <input type="email" name="email" id="email" value="<%=data[0].email%>" required readonly>
 
      <label class="required" for="phoneno">Phone Number</label><span style="color:#ff0000">*</span>
      <input name="phone" id="phno" placeholder="Your phone number.." required>
 
     <label class="required" for="city">City</label><span style="color:#ff0000">*</span>
     <select data-target="branch" class="selectFilter" id="city" name="city">
-      <option value="-1">City</option>
+      <option value="">City</option>
 
       <option data-ref="mys">Mysore</option>
       <option data-ref="del">Delhi</option>
@@ -82,7 +82,7 @@ button:hover {
 
     <label class="required" for="branch">Branch</label><span style="color:#ff0000">*</span>
     <select class="branch selectFilter" id="branch" name="branch">
-      <option value="-1">Branch</option>
+      <option value="">Branch</option>
 
       <option data-belong="mys">SJCE Campus</option>
       <option data-belong="mys">Vijaynagar</option>
@@ -127,6 +127,6 @@ button:hover {
 </div>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<script src="../js/selectFilter.min.js"></script>
+<script src="../../js/selectFilter.min.js"></script>
 </body>
 </html>

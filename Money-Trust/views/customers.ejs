@@ -69,6 +69,7 @@
     <table class="table">
         <thead>
           <tr>
+            <th scope="col">Sr no.</th>
             
             <th scope="col">Application No.</th>
             <th scope="col">Name</th>
@@ -93,8 +94,8 @@
          
           for(var i = 0; i< data.length; i++) {%>  
           <tr>
-            <!-- <th scope="row"><%= (i+1) %></th> -->
-            <td><%= data[i].id%></td>
+            <th scope="row"><%= (i+1) %></th>
+            <td><%= data[i].app_id%></td>
             <td><%= data[i].name%></td>
             <td><%= data[i].loan_type%></td>
 

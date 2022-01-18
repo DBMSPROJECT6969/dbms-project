@@ -61,7 +61,7 @@
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
         <div class="welcome">
-        <h2>Welcome <%=data%></h2>
+        <h2>Welcome <%=data[0].name%></h2>
       </div>
     </div>
     </section><!-- End Breadcrumbs -->
@@ -75,7 +75,7 @@
             <div class="icon-box">
               <img src="../img/a2.jpg" alt="" class="img-fluid">
               <div class="text-align-education">
-              <h4><a href="/records">Check  Status</a></h4>
+              <h4><a href="/records/<%=data[0].username%>">Check  Status</a></h4>
             </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
             <div class="icon-box">
               <img src="../img/a1.jpg" alt="" class="img-fluid">
               <div class="text-align-home">
-              <h4><a href="/availableLoans">Apply for Loans</a></h4>
+              <h4><a href="/availableLoans/<%=data[0].username%>">Apply for Loans</a></h4>
             </div>
             </div>
           </div>
@@ -93,7 +93,7 @@
             <div class="icon-box">
               <img src="../img/a3.jpg" alt="" class="img-fluid">
               <div class="text-align-car">
-              <h4><a href="/user_prev_records">Sanctioned Loans</a></h4>
+              <h4><a href="/user_prev_records/<%=data[0].username%>">Sanctioned Loans</a></h4>
             </div>
             </div>
           </div>

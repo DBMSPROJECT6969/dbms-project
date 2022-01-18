@@ -52,7 +52,7 @@
               <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
               <% if(login){ %>
 
-              <li><a class="nav-link scrollto" href="/profile/<%=login[0].name%>">Profile</a></li>
+              <li><a class="nav-link scrollto" href="/profile/<%=login[0].username%>">Profile</a></li>
               <% } %>
 
             </ul>
@@ -109,9 +109,7 @@
 
               <div class="formup sign-up">
                 <form action="/register" method="post">
-                  <div class="register">
                   <h2>Register Yourself</h2>
-                </div>
                     <label>
                       <span>Name</span>
                       <input type="name" name="register_name" required/>

@@ -51,12 +51,20 @@
   </header><!-- End Header -->
 
   <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="welcome">
+        <h2>There are total <%=data.length%> loan applications</h2>
+      </div>
+    </div>
+    </section>
 
    <section>
 
     <table class="table">
         <thead>
-          <tr>
+          <tr>.
+            <th scope="col">Sr no.</th>
             
             <th scope="col">Application No.</th>
             <th scope="col">Name</th>
@@ -80,8 +88,8 @@
          
           for(var i = 0; i< data.length; i++) {%>  
           <tr>
-            <!-- <th scope="row"><%= (i+1) %></th> -->
-            <td><%= data[i].id%></td>
+            <th scope="row"><%= (i+1) %></th>
+            <td><%= data[i].app_id%></td>
             <td><%= data[i].name%></td>
             <td><%= data[i].loan_type%></td>
 
@@ -95,11 +103,11 @@
             
 
             <td>
-                <form action="/accept/<%=data[i].id%>" method="get">
+                <form action="/accept/<%=data[i].app_id%>" method="get">
                     <button class="btn btn-success" type="submit" style="width: 90px;">Accept</button>                                            
                 </form>
 
-                <form action="/reject/<%=data[i].id%>" method="get">
+                <form action="/reject/<%=data[i].app_id%>" method="get">
                   <button class="btn btn-danger mt-1" type="submit" style="width: 90px;">Reject</button>                                            
               </form>
            </td>
