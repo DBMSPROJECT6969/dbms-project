@@ -18,6 +18,18 @@ body {
   height: 450px;
   border-radius: 20px;
 }
+.col-md-5{
+  margin-left: 110px;
+}
+.mt-5{
+  margin-left: 100px;
+}
+.welcome-admin{
+  text-align: center;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+}
+
 .congrats{
   color: #ffffff;
   font-size: 22px;
@@ -60,8 +72,33 @@ h6 {
   color: #ffffff;
   font-family: "Raleway", sans-serif;
   margin-left: 350px;
+  text-align: center;
 }
-
+.welcome-1 {
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+.welcome-2 {
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+.welcome-3 {
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+.welcome-4 {
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+.welcome-5 {
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
 .container-fluid {
   margin-top: 11px;
   margin-bottom: 11px;
