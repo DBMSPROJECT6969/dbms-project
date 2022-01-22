@@ -55,7 +55,7 @@ button:hover {
     </div>
 <div class="container">
   <h3>Loan Application Form</h3>
-  <form action="/apply/<%=data[0].id%>/<%=data[0].username%>" method="get">
+  <form action="/apply/<%=data[0].id%>/<%=data[0].username%>" method="post">
     <label class="required" for="fname">Full Name</label><span style="color:#ff0000">*</span>
     <input type="text"  name="name" value="<%=data[0].name%>" required readonly>
 
