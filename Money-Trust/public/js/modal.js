@@ -16,9 +16,9 @@ btn.onclick = function(e) {
   e.preventDefault();
   modal.style.display = "block";
 }
-logoutbtn.onclick = function(e){
-  e.preventDefault();
-}
+// logoutbtn.onclick = function(e){
+//   e.preventDefault();
+// }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";

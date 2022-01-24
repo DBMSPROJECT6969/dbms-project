@@ -50,9 +50,7 @@ button:hover {
 
 
 
-    <div style="text-align: center; " >
-         <img style="border-radius: 100%;" src="m5.png" alt="">
-    </div>
+
 <div class="container">
   <h3>Loan Application Form</h3>
   <form action="/apply/<%=data[0].id%>/<%=data[0].username%>" method="post">
@@ -63,7 +61,7 @@ button:hover {
      <input type="email" name="email"  value="<%=data[0].email%>" required readonly>
 
      <label class="required" for="phoneno">Phone Number</label><span style="color:#ff0000">*</span>
-     <input name="phone" placeholder="Your phone number.." required>
+     <input  name="phone" maxlength="11" minlength="10" placeholder="Your phone number.." required>
 
     <label class="required" for="city">City</label><span style="color:#ff0000">*</span>
     <select data-target="branch" class="selectFilter" name="city" required>
@@ -100,22 +98,22 @@ button:hover {
     
 
     <label for="rate" class="required">Interest Rate(%p.a.)</label><span style="color:#ff0000">*</span>
-    <input  type="text" id="rate" name="rate"  value="<%=data[0].rate%>" required readonly> 
+    <input  type="number" id="rate" name="rate"  value="<%=data[0].rate%>" required readonly> 
 
     <label for="duration" class="required">Period(years)</label><span style="color:#ff0000">*</span>
-    <input  type="text" id="duration" name="period"  value="<%=data[0].duration%>" required readonly> 
+    <input  type="number" id="duration" name="period"  value="<%=data[0].duration%>" required readonly> 
      
      <label for="adhaar" class="required">Adhaar Card Number</label><span style="color:#ff0000">*</span>
-    <input maxlength="16" minlength="16"  id="ano" name="adhaar" placeholder="Adhaar Card Number.." required>
+    <input  maxlength="12" minlength="12"  id="ano" name="adhaar" placeholder="Adhaar Card Number.." required>
 
     <label for="pan" class="required">PAN Number</label><span style="color:#ff0000">*</span>
-    <input  id="pno" name="pan" placeholder="PAN Number.." required>
+    <input  type="text" id="pno" name="pan" placeholder="PAN Number.." required>
 
     <label for="amt" class="required">Amount</label><span style="color:#ff0000">*</span>
-    <input  id="amt" name="amount" placeholder="Amount.." required>
+    <input  type="number" id="amt" name="amount" placeholder="Amount.." required>
     
     <label for="accno" class="required">Account Number</label><span style="color:#ff0000">*</span>
-    <input id="acno" name="account" placeholder="Your account number.. " required>
+    <input  maxlength="16" minlength="16" id="acno" name="account" placeholder="Your account number.. " required>
 
     <label for="" class="required">Upload Your Adhaar Card, Pan Card and Passbook</label><span style="color:#ff0000">*</span>
     <input type="file" name="upload" accept="application/pdf,application/vnd.ms-excel"  required/>
