@@ -240,7 +240,7 @@ app.post('/apply/:id/:user',function(req,res){
         pan:req.body.pan,
         amount:req.body.amount,
         account_no:req.body.account,
-        application_form:req.body.upload,
+        document:req.body.upload,
         status:2,
         loan_id:id,
         username:user
@@ -304,7 +304,8 @@ app.get('/accept/:id', function(req,res){
    db.query(sql,function(err){
        if(err) throw err;
        else{
-            res.redirect('back');   
+        res.redirect('back');
+  
        }
    })
 })
@@ -317,6 +318,8 @@ app.get('/reject/:id', function(req,res){
         if(err) throw err;
         else{
             res.redirect('back');
+
+
         }
     })
     
