@@ -38,23 +38,23 @@ app.get("/logout", function(req, res){
 })
 
 
-// register
+// Users
 
-app.post("/register", function(req, res){
-    var register= {
-        name : req.body.register_name,
-        email : req.body.register_email,
-        username: req.body.register_username,
+app.post("/Users", function(req, res){
+    var Users= {
+        name : req.body.Users_name,
+        email : req.body.Users_email,
+        username: req.body.Users_username,
         password: req.body.pswd1
    };
 
-db.query("select email, username from register where email= ? or username= ?",[register.email,register.username], function(err, result){
+db.query("select email, username from Users where email= ? or username= ?",[Users.email,Users.username], function(err, result){
     if(result.length===0){
-        db.query('INSERT INTO register set ?',register,function(err,result){
+        db.query('INSERT INTO Users set ?',Users,function(err,result){
             if(err)
             console.log(err);
-            // console.log("New User Registered");
-            alert("You have registered");
+            // console.log("New User Usersed");
+            alert("You have Usersed");
             res.render("home",{login:false});
         })
     }
@@ -73,7 +73,7 @@ app.post("/signin",(req,res)=>{
     const user=req.body.login_name;
     const password=req.body.login_password;
     
-    db.query('SELECT * FROM register WHERE username = ? AND password = ?', [user, password], function(error, results) {
+    db.query('SELECT * FROM Users WHERE username = ? AND password = ?', [user, password], function(error, results) {
         if (results.length > 0) {
             // console.log("You have signed in");
             // console.log(results[0].name);
@@ -103,7 +103,7 @@ app.post("/signin",(req,res)=>{
 
 app.get("/profile/:username",function(req,res){
     let {username}=req.params;
-    db.query(`select * from register where username='${username}'`,function(err,results){
+    db.query(`select * from Users where username='${username}'`,function(err,results){
         if(err)
         throw err
         res.render("inner-page",{data:results});
@@ -124,7 +124,7 @@ app.get("/availableLoans/:username",function(req,res){
 // CURRENT STATUS
 app.get("/records/:username",function(req,res){
     let {username}=req.params;
-    db.query(`select * from ((Applicant inner join register on Applicant.username=register.username ) inner join banks on Applicant.loan_id=banks.id) where Applicant.username='${username}'and status=?`,['2'],function(err, results){
+    db.query(`select * from ((Applications inner join Users on Applications.username=Users.username ) inner join banks on Applications.loan_id=banks.id) where Applications.username='${username}'and status=?`,['2'],function(err, results){
         if(err)
         throw err;
         else{
@@ -140,7 +140,7 @@ app.get("/records/:username",function(req,res){
 // SANCTIONED LOANS
 app.get('/user_prev_records/:username',function(req,res){
     let {username}=req.params;
-    db.query(`select * from ((Applicant inner join register on Applicant.username=register.username ) inner join banks on Applicant.loan_id=banks.id) where Applicant.username='${username}'and status<>?`,['2'],function(err, results){
+    db.query(`select * from ((Applications inner join Users on Applications.username=Users.username ) inner join banks on Applications.loan_id=banks.id) where Applications.username='${username}'and status<>?`,['2'],function(err, results){
         if(err)
         throw err;
         else
@@ -152,7 +152,7 @@ app.get('/user_prev_records/:username',function(req,res){
 // DELETE
 app.get('/delete/:id', function(req,res){
     let {id} = req.params;
-    var sql='delete from Applicant where app_id=?';
+    var sql='delete from Applications where app_id=?';
     db.query(sql,[id],function(err){
         if(err) throw err;
         else
@@ -168,7 +168,7 @@ app.get('/delete/:id', function(req,res){
 //CAR LOAN
 app.get('/Carloan/:username',function(req,res){
     let {username}=req.params;
-    db.query(`select * from banks inner join register  where banks.loan_type ='Car-Loan' and register.username='${username}'`,function(err, results){
+    db.query(`select * from banks inner join Users  where banks.loan_type ='Car-Loan' and Users.username='${username}'`,function(err, results){
 
         if(err)
         throw err;
@@ -180,7 +180,7 @@ app.get('/Carloan/:username',function(req,res){
 app.get('/Homeloan/:username',function(req,res){
     let {username}=req.params;
 
-    db.query(`select * from banks inner join register  where banks.loan_type ='Home-Loan' and register.username='${username}'`,function(err, results){
+    db.query(`select * from banks inner join Users  where banks.loan_type ='Home-Loan' and Users.username='${username}'`,function(err, results){
 
         if(err)
         throw err;
@@ -193,7 +193,7 @@ app.get('/Homeloan/:username',function(req,res){
 app.get('/Eduloan/:username',function(req,res){
     let {username}=req.params;
 
-    db.query(`select * from banks inner join register  where banks.loan_type ='Education-Loan' and register.username='${username}'`,function(err, results){
+    db.query(`select * from banks inner join Users  where banks.loan_type ='Education-Loan' and Users.username='${username}'`,function(err, results){
         if(err)
         throw err;
         else
@@ -210,7 +210,7 @@ app.get('/appform/:id/:username',function(req,res){
     let {id}=req.params;
     let {username}=req.params;
 
-    var sql=`select * from banks inner join register  where banks.id ='${id}' and register.username='${username}'`;
+    var sql=`select * from banks inner join Users  where banks.id ='${id}' and Users.username='${username}'`;
     db.query(sql,function(err,results){
         if(err)
         throw err
@@ -247,7 +247,7 @@ app.post('/apply/:id/:user',function(req,res){
 
 
     }
-    db.query('INSERT INTO Applicant set ?',application,function(err,result){
+    db.query('INSERT INTO Applications set ?',application,function(err,result){
         if(err)
         console.log(err);
         else{
@@ -300,7 +300,7 @@ app.post("/",function(req,res){
 
 app.get('/accept/:id', function(req,res){
     let {id} = req.params;
-    var sql=`update Applicant set status ='1' where app_id=${id}`;
+    var sql=`update Applications set status ='1' where app_id=${id}`;
    db.query(sql,function(err){
        if(err) throw err;
        else{
@@ -312,7 +312,7 @@ app.get('/accept/:id', function(req,res){
 
 app.get('/reject/:id', function(req,res){
     let {id} = req.params;
-     var sql=`update Applicant set status ='0' where app_id=${id}`;
+     var sql=`update Applications set status ='0' where app_id=${id}`;
     db.query(sql,function(err){
         if(err) throw err;
         else{
@@ -328,7 +328,7 @@ app.get('/reject/:id', function(req,res){
 app.get("/admin_verification/:user",function(req,res){
     let {user}=req.params;
     // console.log(user);
-    db.query("select * from ((Applicant inner join banks on Applicant.loan_id=banks.id) inner join register on register.username=Applicant.username) where branch in (select branch from Employee where username=?) and bank in (select bank from Employee where username=?) and status=?",[user,user,2],function(err,rows){
+    db.query("select * from ((Applications inner join banks on Applications.loan_id=banks.id) inner join Users on Users.username=Applications.username) where branch in (select branch from Employee where username=?) and bank in (select bank from Employee where username=?) and status=?",[user,user,2],function(err,rows){
         if(err)
         throw err;
         else
@@ -340,7 +340,7 @@ app.get("/admin_verification/:user",function(req,res){
 app.get('/customers/:user',function(req,res){
     let {user}=req.params;
     // console.log(user);
-    db.query("select * from ((Applicant inner join banks on Applicant.loan_id=banks.id) inner join register on register.username=Applicant.username) where branch in (select branch from Employee where username=?) and bank in (select bank from Employee where username=?) and status<>?",[user,user,2],function(err,rows){
+    db.query("select * from ((Applications inner join banks on Applications.loan_id=banks.id) inner join Users on Users.username=Applications.username) where branch in (select branch from Employee where username=?) and bank in (select bank from Employee where username=?) and status<>?",[user,user,2],function(err,rows){
     
         if(err) throw err;
         else{
